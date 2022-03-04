@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 import idl from './idl.json';
 
@@ -16,6 +16,7 @@ const opts = {
   preflightCommitment: "processed"
 }
 const programID = new PublicKey(idl.metadata.address);
+const network = clusterApiUrl('devnet');
 
 function App() {
   const [value, setValue] = useState('');
@@ -115,7 +116,8 @@ function App() {
 }
 
 const AppWithProvider = () => (
-    <ConnectionProvider endpoint="http://127.0.0.1:8899">
+    // <ConnectionProvider endpoint="http://127.0.0.1:8899">
+    <ConnectionProvider endpoint={network}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <App />
