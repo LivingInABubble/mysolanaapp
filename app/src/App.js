@@ -6,14 +6,13 @@ import {
 } from '@project-serum/anchor';
 import idl from './idl.json';
 
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { getPhantomWallet } from '@solana/wallet-adapter-wallets';
 import { useWallet, WalletProvider, ConnectionProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-// require('@solana/wallet-adapter-react-ui/styles.css');
 
 const wallets = [
   /* view list of available wallets at https://github.com/solana-labs/wallet-adapter#wallets */
-  new PhantomWalletAdapter()
+  getPhantomWallet()
 ]
 
 const { SystemProgram, Keypair } = web3;
