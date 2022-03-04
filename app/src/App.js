@@ -4,11 +4,11 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 import idl from './idl.json';
 
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { getPhantomWallet } from '@solana/wallet-adapter-wallets';
 import { useWallet, WalletProvider, ConnectionProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
-const wallets = [ new PhantomWalletAdapter() ]
+const wallets = [ getPhantomWallet() ]
 
 const { SystemProgram, Keypair } = web3;
 const baseAccount = Keypair.generate();
